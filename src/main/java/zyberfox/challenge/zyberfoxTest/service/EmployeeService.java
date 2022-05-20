@@ -2,10 +2,13 @@ package zyberfox.challenge.zyberfoxTest.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import zyberfox.challenge.zyberfoxTest.entity.Department;
 import zyberfox.challenge.zyberfoxTest.entity.Employee;
+import zyberfox.challenge.zyberfoxTest.repository.DepartmentRepository;
 import zyberfox.challenge.zyberfoxTest.repository.EmployeeRepository;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +18,9 @@ public class EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private DepartmentRepository departmentRepository;
 
     public List<Employee> getEmployees()
     {
@@ -72,31 +78,31 @@ public class EmployeeService {
         return  employeeList;
     }
 
-    public List<Employee> employeesWhoBirthdayIn20Days()
+    public List<Employee> getEmployeesByDepartmentId(int id)
     {
         List<Employee> employees = employeeRepository.findAll();
-        List<Employee> employeeList = null;
-        Date date = new Date();
-
-
-        for (Employee emp : employees)
+        Department department = departmentRepository.findById(id);
+        List<Employee> employeeList = new ArrayList<>();
+        if(department != null)
         {
-
-            if(emp.getBirth_date().getMonth() == date.getMonth() && emp.getBirth_date().getDate() >= date.getDate()
-                    && emp.getBirth_date().getDate() <= date.getDate() + 20)
+            for (Employee emp: employees)
             {
-                employeeList.add(emp);
+                if(department.getId() == id)
+                {
+                    employeeList.addAll(department.getEmployees());
+                    break;
+                }
             }
+            return employeeList;
         }
-        return  employeeList;
-
+        else {
+            return null;
+        }
 
     }
 
-  // add 20 days before birthday
-    //add imAGE
-    // ADD DEPAERTMENTS OBJECTS
-    // PULL BY SPECIFIC DEPARTMENT
-    // THROW A BUG THAT THEY NEED TO FIX, BREAK THE SYSTEM
+
+
+
 
 }

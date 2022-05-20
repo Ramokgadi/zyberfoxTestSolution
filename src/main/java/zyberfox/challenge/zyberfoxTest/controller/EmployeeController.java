@@ -2,8 +2,11 @@ package zyberfox.challenge.zyberfoxTest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
+import zyberfox.challenge.zyberfoxTest.entity.Department;
 import zyberfox.challenge.zyberfoxTest.entity.Employee;
+import zyberfox.challenge.zyberfoxTest.repository.DepartmentRepository;
 import zyberfox.challenge.zyberfoxTest.service.EmployeeService;
 
 import java.util.List;
@@ -14,6 +17,9 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService service;
+
+    @Autowired
+    private DepartmentRepository repository;
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
@@ -58,4 +64,14 @@ public class EmployeeController {
     {
         return  service.findByBirthDayMonth(birthdayMonth);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping (value="/dept-employees/{id}")
+    public List<Employee> findEmployeeByDepartment(@PathVariable ("id") int id)
+    {
+        return  service.getEmployeesByDepartmentId(id);
+    }
+
+    //Add code for that will pull employees started after specified date
+
 }

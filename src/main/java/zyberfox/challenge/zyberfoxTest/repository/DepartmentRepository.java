@@ -6,4 +6,5 @@ import zyberfox.challenge.zyberfoxTest.entity.Employee;
 
 public interface DepartmentRepository extends JpaRepository<Department,Integer> {
 
+    Department findById(int id);
 }
