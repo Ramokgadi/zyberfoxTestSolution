@@ -14,7 +14,8 @@ I would suggest download IntelliJ IDE to run the project then
 
 ![Screenshot from 2022-06-01 21-30-15](https://user-images.githubusercontent.com/105210477/171491796-6b6c0f9b-1f48-4926-a49c-a2dc7dffc1bc.png)
 
-default Data:
+default Data  and Json Format:
+
 Employee Data
 [
     {
