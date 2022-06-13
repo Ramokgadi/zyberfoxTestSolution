@@ -50,10 +50,11 @@ Department Data
 
 --------------------------------------------------------------------------------------------------
 Tasks
+ - create your own web app, using framework of your choice (angular or React). That will consume rest end point of this Java App to...
  - add new record of employee using and save the image as base64 and display the saved record
  - update the employee image and display the updated record
  - increase employee's salary and display updated record
- - get emplooyes who birthday in the specified month
  
- Rest endpoint (RestAPI) of the above mention task are found in the Employee Controller class. the Structure of the data passed to the API is also depfined in the class.
+ 
+ Rest endpoint (RestAPI) of the above mention task are found in the Employee Controller class. the Structure of the data passed to the API is also defined in the class.
   
